@@ -10,51 +10,62 @@ namespace CadastroDeEmpregados
     {
         static void Main(string[] args)
         {
-            int cont = 1;
 
-            while (cont > 0)
             {
-                double salarioliq1 = 0;
-                double salarioliq2 = 0;
-                double salarioliq3 = 0;
-                Console.WriteLine("Insira a forma de contratação usando (A)ssalariado, (C)missionado, (H)orista: ");
-                string forma = Console.ReadLine();
+                int cont = 0;
+                int continuar = 1;
+                double salarioliq = 0;
 
-                switch (forma)
+
+                while (continuar == 1)
                 {
-                    case "A":
-                        Console.WriteLine("Insira o salário: ");
-                        double sal = double.Parse(Console.ReadLine());
-                        Console.WriteLine("Insira o desconto: ");
-                        double desc = double.Parse(Console.ReadLine());
-                        salarioliq1 = sal - desc;
-                        break;
+                    Console.WriteLine("Insira a forma de contratação usando (A)ssalariado (C)omissionado (H)orista: ");
+                    string contratacao = Console.ReadLine();
 
-                    case "C":
-                        Console.WriteLine("Insira a quantidade de peças: ");
-                        int qtdpcs = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Insira o valor pago por cada peça: ");
-                        double valor = double.Parse(Console.ReadLine());
-                        salarioliq2 = qtdpcs * valor;
-                        break;
+                    switch (contratacao)
+                    {
+                        case "A":
+                            Console.WriteLine("Insira o valor do salário bruto: ");
+                            double salb = double.Parse(Console.ReadLine());
+                            Console.WriteLine("Insira o valor do desconto: ");
+                            double desc = double.Parse(Console.ReadLine());
 
-                    case "H":
-                        Console.WriteLine("Insira a quantidade de horas trabalhadas: ");
-                        double hrs = double.Parse(Console.ReadLine());
-                        Console.WriteLine("Insira o valor da hora: ");
-                        double valorhr = double.Parse(Console.ReadLine());
-                        salarioliq3 = valorhr * hrs;
-                        break;
+                            salarioliq = salb - desc;
+                            break;
 
-                    default:
-                        Console.WriteLine("Opção Inválida");
-                        break;
+                        case "C":
+                            Console.WriteLine("Insira a quantidade de peças produzidas: ");
+                            int qntdpecas = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Insira o valor pago por peça: ");
+                            double valor = double.Parse(Console.ReadLine());
 
+                            salarioliq = qntdpecas * valor;
+                            break;
+
+                        case "H":
+                            Console.WriteLine("Insira a quantidade de horas trabalhadas: ");
+                            int hora = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Insira o valor recebido por hora: ");
+                            double valorhora = double.Parse(Console.ReadLine());
+
+                            salarioliq = hora * valorhora;
+                            break;
+                    }
+
+                    Console.WriteLine("Deseja continuar? (1)Sim (2)Não: ");
+                    continuar = int.Parse(Console.ReadLine());
+                    cont++;
+                    salarioliq++;
                 }
-                
-                    double folhadepagamento = double.Parse(Console.ReadLine());
-                Console.WriteLine("");
 
+                     double folhapagamento = salarioliq + salarioliq;
+                     double mediasalarial = folhapagamento / cont;
+
+                Console.WriteLine("Folha de pagamento R$: " + folhapagamento);
+                Console.WriteLine("Funcionários cadastrados: " + cont);
+                Console.WriteLine("Média salarial R$: " + mediasalarial);
+
+                Console.ReadKey();
 
             }
         }
